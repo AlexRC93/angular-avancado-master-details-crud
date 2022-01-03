@@ -3,7 +3,7 @@ import { Category } from "../../categories/shared/category.model";
 export class Entry{
     constructor(
         public id?: number,
-        public nome?: string,
+        public name?: string,
         public description?: string,
         public type?: string,
         public amount?: string,
@@ -15,10 +15,16 @@ export class Entry{
 
     static types = {
         expense: 'Despesa',
-        renevue: 'Receita'
-    }
+        revenue: 'Receita'
+      };
+    
+      static fromJson(jsonData: any): Entry {
+        return Object.assign(new Entry(), jsonData);
+      }
+    
+      get paidText(): string {
+        return this.paid ? 'Pago' : 'Pedente';
+      }
 
-    get paidText(): string {
-        return this.paid ? 'Pago' : 'Pendente';
-    }
+   
 }
