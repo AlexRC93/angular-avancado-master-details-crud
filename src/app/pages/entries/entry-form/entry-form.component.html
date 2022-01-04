@@ -27,9 +27,24 @@
     </div>
 
     <div class="card-body">
+
       <div class="form-row">
-        <div class="form group col-md-4">
-          <label for="name">Nome</label>
+        <!-- type -->
+        <div class="form group col-md-2">
+          <label for="type">Tipo</label>
+          <select name="type" id="type" formControlName="type" class="form-control">
+            <option value="expense">Despesa</option>
+            <option value="revenue">Receita</option>
+          </select>
+
+          <div class="text-danger" *ngIf="entryForm.get('type').invalid && entryForm.get('type').touched">
+            <div *ngIf="entryForm.get('type').errors.required">Dado obrigatório</div>
+          </div>
+        </div>
+
+         <!-- name -->
+         <div class="form group col-md-5">
+          <label for="name">Lançamento</label>
           <input type="text" class="form-control" id="name" formControlName="name">
           <div class="text-danger" *ngIf="entryForm.get('name').invalid && entryForm.get('name').touched">
             <div *ngIf="entryForm.get('name').errors.required">Dado obrigatório</div>
@@ -37,6 +52,13 @@
           </div>
         </div>
 
+      </div>
+
+      <div class="form-row">
+
+       
+
+        <!-- description -->
         <div class="form groip col-md-8">
           <label for="description">Descrição</label>
           <input type="text" class="form-control" id="description" formControlName="description">
