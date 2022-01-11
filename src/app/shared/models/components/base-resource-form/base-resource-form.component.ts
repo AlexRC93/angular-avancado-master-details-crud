@@ -48,7 +48,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     } 
   }
 
-  editionPageTitle(): string {
+  protected editionPageTitle(): string {
     return "Edição";
   }
 
